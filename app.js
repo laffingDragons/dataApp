@@ -98,7 +98,7 @@ app.put('/blogs/:id/edit', function(req, res) {
 
     var update = req.body;
 
-    blogModel.findOneUpdate({'_id': req.params.id}, update, function (err, result) {
+    blogModel.findOneAndUpdate({'_id': req.params.id}, update, function (err, result) {
 
         if (err) {
             console.log("some Error");
