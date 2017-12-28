@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var blogSchema = new Schema({
     title : {type: String,default: '',required: true},
-    SubTitle : {type: String,default: ''},
+    subTitle : {type: String,default: ''},
     blogBody : {type: String,default: ''},
     tags : [],
     created : {type:Date},
