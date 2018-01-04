@@ -5,14 +5,8 @@ var bodyParser = require('body-parser');
 //calling mongoose module
 var mongoose = require('mongoose');
 
-app.use(bodyParser.json({
-    limit: '10mb',
-    extended: true
-}));
-app.use(bodyParser.urlencoded({
-    limit: '10mb',
-    extended: true
-}));
+app.use(bodyParser.json({limit: '10mb',extended: true}));
+app.use(bodyParser.urlencoded({limit: '10mb',extended: true}));
 
 var dbPath = "mongodb://localhost/myblogapp";
 //command to connect with database
@@ -137,6 +131,7 @@ app.get('*', function (req, res, next) {
     res.status = 404;
     next('Path not Found');
 }); //end of normal routes
+
 //error handling middleware
 app.use(function (err, req, res, next) {
     console.log('Error handler was in use');
