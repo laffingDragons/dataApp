@@ -8,6 +8,16 @@ var mongoose = require('mongoose');
 app.use(bodyParser.json({limit: '10mb',extended: true}));
 app.use(bodyParser.urlencoded({limit: '10mb',extended: true}));
 
+////////Applicationlevel middleware////////////
+
+app.use(function (req, res, next) {
+    console.log('Time of request : ', Date.now());
+    console.log('Request URL is ', req.originalUrl);
+    console.log('The request IP was :', req.ip);
+
+    next();
+});
+
 var dbPath = "mongodb://localhost/myblogapp";
 //command to connect with database
 db = mongoose.connect(dbPath);
