@@ -9,7 +9,6 @@ app.use(bodyParser.json({limit: '10mb',extended: true}));
 app.use(bodyParser.urlencoded({limit: '10mb',extended: true}));
 
 ////////Applicationlevel middleware////////////
-
 app.use(function (req, res, next) {
     console.log('Time of request : ', Date.now());
     console.log('Request URL is ', req.originalUrl);
@@ -18,6 +17,7 @@ app.use(function (req, res, next) {
     next();
 });
 
+//////mongoose path//////////
 var dbPath = "mongodb://localhost/myblogapp";
 //command to connect with database
 db = mongoose.connect(dbPath);
@@ -99,8 +99,7 @@ app.post('/blog/create', function (req, res) {
             res.send(error);
         }
     }); //end new blog save
-
-}); // 
+}); // end create blog
 
 //start route to edit a blog using _id
 
@@ -134,7 +133,7 @@ app.post('/blogs/:id/delete', function (req, res) {
             res.send(result);
         }
     }); //end user model find
-});
+});//end delete blog
 
 //starting with error handling
 app.get('*', function (req, res, next) {
